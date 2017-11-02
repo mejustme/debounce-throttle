@@ -30,7 +30,8 @@ $(document).ready(function () {
     lazyThrottle_true_false,
     lazyThrottle_false_true;
 
-  function update (div, color) {
+  function update (div, color, type) {
+    if(counter > 60 && type == 'lazyThrottle_true_false') return  // 已结束不覆盖
     div[0].lastChild.className = 'color' + color
     div[0].lastChild.innerHTML = color
   }
@@ -60,10 +61,9 @@ $(document).ready(function () {
     })
 
     lazyDebounce_false_false = _.debounce(update, 200, {
-      leading: true,
-      trailing: true
+      leading: false,
+      trailing: false
     })
-
 
 
 
@@ -96,7 +96,7 @@ $(document).ready(function () {
     lazyDebounce_true_true(divDebounce_true_true, next_color)
 
     lazyThrottle_false_true(divThrottle_false_true, next_color)
-    lazyThrottle_true_false(divThrottle_true_false, next_color)
+    lazyThrottle_true_false(divThrottle_true_false, next_color, 'lazyThrottle_true_false')
     lazyThrottle_false_false(divThrottle_false_false, next_color)
     lazyThrottle_true_true(divThrottle_true_true, next_color)
 
@@ -134,6 +134,11 @@ $(document).ready(function () {
     draw()
   })
 
+  drawing_automated = setInterval(function(){
+    sidebar_mousemove.trigger('mousemove');
+    sidebar_mousemove.trigger('mousemove');
+  }, 300);
+
   var draw = function () {
     drawing = setInterval(function () {
       counter++
@@ -149,17 +154,11 @@ $(document).ready(function () {
       divThrottle_false_false[0].appendChild(document.createElement('span'))
       divThrottle_true_true[0].appendChild(document.createElement('span'))
 
-      if (counter > 95) {
+      if (counter > 60) {
         clearInterval(drawing)
         clearInterval(drawing_automated)
       }
-    }, 30)
+    }, 50)
   }
-
-  reset();
-  draw();
-  drawing_automated = setInterval(function(){
-    sidebar_mousemove.trigger('mousemove');
-  }, 100);
 
 })
