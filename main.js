@@ -1,10 +1,9 @@
 $(document).ready(function () {
-
   var allEvents = $('#allEvents'),
 
     divDebounce_false_true = $('#debounce_false_true'),
     divDebounce_true_false = $('#debounce_true_false'),
-    divDebounce_false_false = $('#debounce_false_false'),
+    // divDebounce_false_false = $('#debounce_false_false'),
     divDebounce_true_true = $('#debounce_true_true'),
 
     divThrottle_true_true = $('#throttle_true_true'),
@@ -32,8 +31,9 @@ $(document).ready(function () {
 
   function update (div, color, type) {
     if(counter > 60 && type == 'lazyThrottle_true_false') return  // 已结束不覆盖
-    div[0].lastChild.className = 'color' + color
-    div[0].lastChild.innerHTML = color
+    var lastChild = div[0].lastChild
+    lastChild.className = 'color' + color
+    lastChild.innerHTML = color
   }
 
   function setup_lazy_functions (_) {
@@ -60,10 +60,10 @@ $(document).ready(function () {
       trailing: true
     })
 
-    lazyDebounce_false_false = _.debounce(update, 200, {
-      leading: false,
-      trailing: false
-    })
+    // lazyDebounce_false_false = _.debounce(update, 200, {
+    //   leading: false,
+    //   trailing: false
+    // })
 
 
     lazyThrottle_true_true = _.throttle(update, 200, {
@@ -91,7 +91,7 @@ $(document).ready(function () {
     update(allEvents, next_color)
     lazyDebounce_false_true(divDebounce_false_true, next_color)
     lazyDebounce_true_false(divDebounce_true_false, next_color)
-    lazyDebounce_false_false(divDebounce_false_false, next_color)
+    // lazyDebounce_false_false(divDebounce_false_false, next_color)
     lazyDebounce_true_true(divDebounce_true_true, next_color)
 
     lazyThrottle_false_true(divThrottle_false_true, next_color)
@@ -111,7 +111,7 @@ $(document).ready(function () {
     allEvents.html('<span></span>')
     divDebounce_false_true.html('<span></span>')
     divDebounce_true_false.html('<span></span>')
-    divDebounce_false_false.html('<span></span>')
+    // divDebounce_false_false.html('<span></span>')
     divDebounce_true_true.html('<span></span>')
 
     divThrottle_false_true.html('<span></span>')
@@ -133,11 +133,6 @@ $(document).ready(function () {
     draw()
   })
 
-  drawing_automated = setInterval(function(){
-    sidebar_mousemove.trigger('mousemove');
-    sidebar_mousemove.trigger('mousemove');
-  }, 300);
-
   var draw = function () {
     drawing = setInterval(function () {
       counter++
@@ -145,7 +140,7 @@ $(document).ready(function () {
 
       divDebounce_false_true[0].appendChild(document.createElement('span'))
       divDebounce_true_false[0].appendChild(document.createElement('span'))
-      divDebounce_false_false[0].appendChild(document.createElement('span'))
+      // divDebounce_false_false[0].appendChild(document.createElement('span'))
       divDebounce_true_true[0].appendChild(document.createElement('span'))
 
       divThrottle_false_true[0].appendChild(document.createElement('span'))
