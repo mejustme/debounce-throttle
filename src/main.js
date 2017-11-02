@@ -131,6 +131,7 @@ new Vue({
       }
       window.start = function () {
         setup_lazy_functions(_)
+        reset()
         sidebar_mousemove.off('mousemove').on('mousemove', function () {
           lazy_Debounce_Events()
         })
