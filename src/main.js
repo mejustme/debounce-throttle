@@ -113,7 +113,6 @@ new Vue({
       }
 
 
-
       function reset () {
         allEvents.html('<span></span>')
         divDebounce_false_true.html('<span></span>')

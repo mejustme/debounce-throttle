@@ -46,6 +46,7 @@
     methods: {
       start: function () {
         window.start()
+        alert('更新函数成功')
       }
     }
   }
