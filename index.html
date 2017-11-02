@@ -10,7 +10,39 @@
     <script type="text/javascript" src="main.js"></script>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="sidebar">
+      <div id="sidebar-free">
+        <p class="tips">移动鼠标</p>
+      </div>
+    </div>
+
+    <div id="content">
+      <h2>Mousemove事件：</h2>
+      <div id="allEvents"></div>
+      <h2>Debounce: 默认-lodash.debounce(fn, 200, {leading: false, trailing: true})</h2>
+      <div id="debounce_false_true"></div>
+
+      <h2>Debounce: lodash.debounce(fn, 200, {leading: true, trailing: false})</h2>
+      <div id="debounce_true_false"></div>
+
+      <h2>Debounce: lodash.debounce(fn, 200, {leading: true, trailing: true})</h2>
+      <div id="debounce_true_true"></div>
+
+      <!--<h2>Debounce: lodash.debounce(fn, 200, {leading: false, trailing: false})</h2>-->
+      <!--<div id="debounce_false_false"></div>-->
+
+      <h2>Throttle: 默认-lodash.throttle(fn, 200, { leading: true, trailing: true});</h2>
+      <div id="throttle_true_true"></div>
+
+      <!--<h2>Throttle: lodash.throttle(fn, 200, { leading: false, trailing: false});</h2>-->
+      <!--<div id="throttle_false_false"></div>-->
+
+      <h2>Throttle: lodash.throttle(fn, 200, { leading: true, trailing: false});</h2>
+      <div id="throttle_true_false"></div>
+
+      <h2>Throttle: lodash.throttle(fn, 200, { leading: false, trailing: true});</h2>
+      <div id="throttle_false_true"></div>
+    </div>
   </body>
 
 </html>
