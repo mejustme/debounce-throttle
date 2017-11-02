@@ -8,7 +8,7 @@ $(document).ready(function () {
     divDebounce_true_true = $('#debounce_true_true'),
 
     divThrottle_true_true = $('#throttle_true_true'),
-    divThrottle_false_false = $('#throttle_false_false'),
+    // divThrottle_false_false = $('#throttle_false_false'),
     divThrottle_true_false = $('#throttle_true_false'),
     divThrottle_false_true = $('#throttle_false_true'),
 
@@ -66,16 +66,15 @@ $(document).ready(function () {
     })
 
 
-
     lazyThrottle_true_true = _.throttle(update, 200, {
       leading: true,
       trailing: true
     })
 
-    lazyThrottle_false_false = _.throttle(update, 200, {
-      leading: false,
-      trailing: false
-    })
+    // lazyThrottle_false_false = _.throttle(update, 200, {
+    //   leading: false,
+    //   trailing: false
+    // })
 
     lazyThrottle_true_false = _.throttle(update, 200, {
       leading: true,
@@ -97,7 +96,7 @@ $(document).ready(function () {
 
     lazyThrottle_false_true(divThrottle_false_true, next_color)
     lazyThrottle_true_false(divThrottle_true_false, next_color, 'lazyThrottle_true_false')
-    lazyThrottle_false_false(divThrottle_false_false, next_color)
+    // lazyThrottle_false_false(divThrottle_false_false, next_color)
     lazyThrottle_true_true(divThrottle_true_true, next_color)
 
     next_color++
@@ -117,7 +116,7 @@ $(document).ready(function () {
 
     divThrottle_false_true.html('<span></span>')
     divThrottle_true_false.html('<span></span>')
-    divThrottle_false_false.html('<span></span>')
+    // divThrottle_false_false.html('<span></span>')
     divThrottle_true_true.html('<span></span>')
     next_color = 0
     counter = 0
@@ -151,7 +150,7 @@ $(document).ready(function () {
 
       divThrottle_false_true[0].appendChild(document.createElement('span'))
       divThrottle_true_false[0].appendChild(document.createElement('span'))
-      divThrottle_false_false[0].appendChild(document.createElement('span'))
+      // divThrottle_false_false[0].appendChild(document.createElement('span'))
       divThrottle_true_true[0].appendChild(document.createElement('span'))
 
       if (counter > 60) {
