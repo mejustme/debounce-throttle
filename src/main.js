@@ -37,7 +37,6 @@ new Vue({
         lazyThrottle_false_true;
 
       function update (div, color, type) {
-        if(counter > 60) return  // 已结束不覆盖
         var lastChild = div[0].lastChild
         lastChild.className = 'color' + color
         lastChild.innerHTML = color
@@ -156,7 +155,7 @@ new Vue({
           // divThrottle_false_false[0].appendChild(document.createElement('span'))
           divThrottle_true_true[0].appendChild(document.createElement('span'))
 
-          if (counter > 60) {
+          if (counter > 50) {
             clearInterval(drawing)
             clearInterval(drawing_automated)
           }

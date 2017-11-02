@@ -85,7 +85,7 @@
   }
 
   #content {
-    padding-top: 18px;
+    padding-top: 5px;
     margin-left: 145px;
     position: relative;
   }
@@ -118,7 +118,7 @@
   }
 
   #sidebar {
-    margin-top: 30px;
+    margin-top: 20px;
     height: 100%;
     width: 120px;
     position: absolute;
