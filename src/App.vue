@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div class="start-btn" @click="start">测试函数</div>
     <div id="sidebar">
       <div id="sidebar-free">
         <p class="tips">移动鼠标</p>
@@ -41,6 +42,11 @@
     name: 'app',
     data () {
       return {}
+    },
+    methods: {
+      start: function () {
+        window.start()
+      }
     }
   }
 </script>
@@ -78,6 +84,7 @@
   }
 
   #content {
+    padding-top: 18px;
     margin-left: 145px;
     position: relative;
   }
@@ -110,6 +117,7 @@
   }
 
   #sidebar {
+    margin-top: 30px;
     height: 100%;
     width: 120px;
     position: absolute;
@@ -170,5 +178,14 @@
 
   .color9 {
     background-color: #5ca6ff
+  }
+  .start-btn{
+    color: #fff !important;
+    border: solid 1px;
+    width: 120px;
+    text-align: center;
+    line-height: 30px;
+    height: 28px !important;
+    cursor: pointer;
   }
 </style>

@@ -112,7 +112,7 @@ new Vue({
         }
       }
 
-      setup_lazy_functions(_)
+
 
       function reset () {
         allEvents.html('<span></span>')
@@ -130,16 +130,17 @@ new Vue({
         clearInterval(drawing_automated)
         clearInterval(drawing)
       }
+      window.start = function () {
+        setup_lazy_functions(_)
+        sidebar_mousemove.off('mousemove').on('mousemove', function () {
+          lazy_Debounce_Events()
+        })
 
-      sidebar_mousemove.on('mousemove', function () {
-        lazy_Debounce_Events()
-      })
-
-      sidebar_mousemove.on('mouseenter', function () {
-        reset()
-        draw()
-      })
-
+        sidebar_mousemove.off('mouseenter').on('mouseenter', function () {
+          reset()
+          draw()
+        })
+      }
       var draw = function () {
         drawing = setInterval(function () {
           counter++
