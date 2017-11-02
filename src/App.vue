@@ -1,60 +1,174 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <div id="sidebar">
+      <div id="sidebar-free">
+        <p class="tips">移动鼠标</p>
+      </div>
+    </div>
+
+    <div id="content">
+      <h2>Mousemove事件：</h2>
+      <div id="allEvents"></div>
+      <h2>Debounce: 默认-lodash.debounce(fn, 200, {leading: false, trailing: true})</h2>
+      <div id="debounce_false_true"></div>
+
+      <h2>Debounce: lodash.debounce(fn, 200, {leading: true, trailing: false})</h2>
+      <div id="debounce_true_false"></div>
+
+      <h2>Debounce: lodash.debounce(fn, 200, {leading: true, trailing: true})</h2>
+      <div id="debounce_true_true"></div>
+
+      <!--<h2>Debounce: lodash.debounce(fn, 200, {leading: false, trailing: false})</h2>-->
+      <!--<div id="debounce_false_false"></div>-->
+
+      <h2>Throttle: 默认-lodash.throttle(fn, 200, { leading: true, trailing: true});</h2>
+      <div id="throttle_true_true"></div>
+
+      <!--<h2>Throttle: lodash.throttle(fn, 200, { leading: false, trailing: false});</h2>-->
+      <!--<div id="throttle_false_false"></div>-->
+
+      <h2>Throttle: lodash.throttle(fn, 200, { leading: true, trailing: false});</h2>
+      <div id="throttle_true_false"></div>
+
+      <h2>Throttle: lodash.throttle(fn, 200, { leading: false, trailing: true});</h2>
+      <div id="throttle_false_true"></div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  export default {
+    name: 'app',
+    data () {
+      return {}
     }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  body {
+    background: #444444;
+    color: white;
+    font: 15px/1.51 Helvetica, sans-serif;
+    overflow: hidden;
+  }
 
-h1, h2 {
-  font-weight: normal;
-}
+  #switcher {
+    text-align: center;
+  }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+  button {
+    cursor: pointer;
+    color: black;
+    border: 1px solid #999;
+    background: #DADADA;
+    padding: 2px 8px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background-image: -moz-linear-gradient(top, #EBEBEB, #B8B8B8);
+    background-image: -o-linear-gradient(top, #EBEBEB, #B8B8B8);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#EBEBEB), to(#B8B8B8));
+    background-image: -webkit-linear-gradient(top, #EBEBEB, #B8B8B8);
+    background-image: linear-gradient(top, #EBEBEB, #B8B8B8);
+  }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+  #use-lodash {
+    margin-right: 30px;
+  }
 
-a {
-  color: #42b983;
-}
+  #content {
+    margin-left: 145px;
+    position: relative;
+  }
+
+  #content span {
+    height: 18px;
+    width: 9px;
+    line-height: 18px;
+    text-align: center;
+    vertical-align: top;
+    display: inline-block;
+    border-left: 1px solid #999;
+    font-size: 12px;
+  }
+
+  #content div {
+    margin: 0;
+    font-family: monospace;
+    color: black;
+    height: 23px;
+  }
+
+  h2 {
+    margin: 10px 0 5px 0;
+    height: 15px;
+    clear: both;
+    font-weight: normal;
+    width: 100%;
+    font-size: 11px;
+  }
+
+  #sidebar {
+    height: 100%;
+    width: 120px;
+    position: absolute;
+  }
+
+  #sidebar-free {
+    height: 95%;
+    width: 100%;
+    border: 1px solid #ccc;
+    position: relative;
+    text-align: center;
+    background-color: #444444;
+    border-radius: 10px;
+  }
+
+  .tips {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .color0 {
+    background-color: #9BFFBB
+  }
+
+  .color1 {
+    background-color: #E3FF7E
+  }
+
+  .color2 {
+    background-color: #B9C6FF
+  }
+
+  .color3 {
+    background-color: #99FF7E
+  }
+
+  .color4 {
+    background-color: #FFB38A
+  }
+
+  .color5 {
+    background-color: #A5FCFF
+  }
+
+  .color6 {
+    background-color: #FF8E9B
+  }
+
+  .color7 {
+    background-color: #FFE589
+  }
+
+  .color8 {
+    background-color: #FFA3D8
+  }
+
+  .color9 {
+    background-color: #5ca6ff
+  }
 </style>
