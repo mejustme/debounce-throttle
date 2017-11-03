@@ -133,7 +133,7 @@ new Vue({
         setup_lazy_functions(_)
         reset()
         sidebar_mousemove.off('mousemove').on('mousemove', function () {
-          lazy_Debounce_Events()
+          lazy_Debounce_Events && lazy_Debounce_Events()
         })
 
         sidebar_mousemove.off('mouseenter').on('mouseenter', function () {
