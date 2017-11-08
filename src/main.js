@@ -38,9 +38,11 @@ new Vue({
 
       function update (div, color, type) {
         if(counter > 50) return  // 已结束不覆盖
-        var lastChild = div[0].lastChild || {}
-        lastChild.className = 'color' + color
-        lastChild.innerHTML = color
+        if (div && div.length && div[0].lastChild) {
+          var lastChild = div[0].lastChild
+          lastChild.className = 'color' + color
+          lastChild.innerHTML = color
+        }
       }
 
       function setup_lazy_functions (_) {
